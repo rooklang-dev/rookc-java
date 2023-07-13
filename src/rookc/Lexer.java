@@ -28,7 +28,6 @@ import java.util.HashMap;
 
 /**
  * @author SrcyDev
- * @see rookc#Parser
  */
 final class Lexer {
     String file,cval,val;
@@ -243,6 +242,35 @@ final class Lexer {
     }
 
     /**
+     * method getCurrentCpos.
+     * Returns the current column position.
+     * 
+     * @return int
+     */
+    public int getCurrentCpos() {
+        return this.cpos;
+    }
+
+    /**
+     * method getCurrentLine.
+     * Returns the current column position.
+     * 
+     * @return int
+     */
+    public int getCurrentLine() {
+        return this.line;
+    }
+
+    /**
+     * Returns the value of the Token.
+     * 
+     * @return String
+     */
+    public String getTokenValue() {
+        return this.cval;
+    }
+
+    /**
      * Method getNextToken.
      * This returns the token type after identifying the type of
      * the token.
@@ -299,6 +327,9 @@ final class Lexer {
                 }
                 case ";" -> {
                     yield TokenType.SEMICOLON;
+                }
+                case "->" -> {
+                    yield TokenType.ARROW;
                 }
                 case "-" -> {
                     if (!isNum(file.charAt(cpos + 1)) || file.charAt(cpos + 1) == ' ') 

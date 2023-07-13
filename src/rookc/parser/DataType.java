@@ -24,5 +24,5 @@ SOFTWARE.
 package rookc.parser;
 
 public enum DataType {
-    INT, FLOAT, CHAR, BOOL, STRING, FUNCTION;
+    INT, FLOAT, CHAR, BOOL, STRING, FUNCTION, CLASS;
 }

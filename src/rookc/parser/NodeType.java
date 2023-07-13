@@ -23,12 +23,26 @@ SOFTWARE.
 */
 package rookc.parser;
 
+import rookc.TokenType;
+
 public enum NodeType {
+    // ROOT
+    ROOT,
+
+    // IDENTIFIER
+    IDENTIFIER,
+
+    // LITERAL
+    LITERAL,
+
     // CONDITION
     COND,
 
     // FUNC-related
-    PARAM,
+    FUNC,PARAM,
+
+    // RETURN-related
+    RETURN, RETURN_TYPE,
 
     // OPERATOR
     ADD, SUB, MUL, DIV, MOD, NOT,
@@ -39,6 +53,8 @@ public enum NodeType {
     // BITWISE OPERATOR
     BITWISE_AND, BITWISE_OR, BITWISE_XOR,
     BITWISE_SHIFT_LEFT, BITWISE_SHIFT_RIGHT,
+
+    BIN_OP, UN_OP,
 
     // IF-related
     IF, ELIF, ELSE,
@@ -56,10 +72,9 @@ public enum NodeType {
     CLASS;
 
 
-    public boolean isBinOp(NodeType nodeType) {
-        return switch (nodeType) {
-            case ASSIGN, ADD, SUB , MUL, DIV, MOD, ADD_ASSIGN, SUB_ASSIGN, MUL_ASSIGN,
-                DIV_ASSIGN, MOD_ASSIGN -> {
+    public static boolean isBinOp(TokenType tokenType) {
+        return switch (tokenType) {
+            case ASSIGN, PLUS, MINUS , ASTERISK, SLASH, PERCENT, BITWISE_AND, BITWISE_OR, BITWISE_XOR, BITWISE_NOT, LEFT_SHIFT, RIGHT_SHIFT,        UNSIGNED_RIGHT_SHIFT, PLUS_ASSIGN, MINUS_ASSIGN, ASTERISK_ASSIGN, SLASH_ASSIGN, PERCENT_ASSIGN, AND_ASSIGN, OR_ASSIGN, XOR_ASSIGN, LEFT_SHIFT_ASSIGN, RIGHT_SHIFT_ASSIGN, UNSIGNED_RIGHT_SHIFT_ASSIGN -> {
                 yield true;
             }
             default -> {

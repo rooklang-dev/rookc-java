@@ -26,11 +26,13 @@ package rookc.parser;
 import java.util.ArrayList;
 
 public final class Node {
-    ArrayList<Node> nodes = new ArrayList<>();
-    String value;
+    private ArrayList<Node> nodes = new ArrayList<>();
+    private String value;
+    private NodeType nodeType;
 
-    public Node (String value) {
+    public Node (String value, NodeType nodeType) {
         this.value = value;
+        this.nodeType = nodeType;
     }
 
     public int length() {
@@ -41,11 +43,15 @@ public final class Node {
         this.nodes.add(node);
     }
 
-    public ArrayList<Node> getNodes() {
+    public ArrayList<Node> getChildren() {
         return this.nodes;
     }
 
     public String getValue() {
         return this.value;
+    }
+
+    public NodeType getType() {
+        return nodeType;
     }
 }
