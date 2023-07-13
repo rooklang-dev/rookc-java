@@ -23,29 +23,48 @@ SOFTWARE.
 */
 package rookc.parser;
 
-import java.util.ArrayList;
+public enum NodeType {
+    // CONDITION
+    COND,
 
-public final class Node {
-    ArrayList<Node> nodes = new ArrayList<>();
-    String value;
+    // FUNC-related
+    PARAM,
 
-    public Node (String value) {
-        this.value = value;
-    }
+    // OPERATOR
+    ADD, SUB, MUL, DIV, MOD, NOT,
+    ASSIGN,
+    ADD_ASSIGN, SUB_ASSIGN, MUL_ASSIGN,
+    DIV_ASSIGN, MOD_ASSIGN, NOT_ASSIGN,
 
-    public int length() {
-        return this.nodes.size();
-    }
+    // BITWISE OPERATOR
+    BITWISE_AND, BITWISE_OR, BITWISE_XOR,
+    BITWISE_SHIFT_LEFT, BITWISE_SHIFT_RIGHT,
 
-    public void addChild(Node node) {
-        this.nodes.add(node);
-    }
+    // IF-related
+    IF, ELIF, ELSE,
 
-    public ArrayList<Node> getNodes() {
-        return this.nodes;
-    }
+    // FOR-related
+    FOR,
 
-    public String getValue() {
-        return this.value;
+    // WHILE-related
+    WHILE,
+
+    // IMPORT RELATED
+    IMPORT, PKG_NAME,
+
+    // CLASS
+    CLASS;
+
+
+    public boolean isBinOp(NodeType nodeType) {
+        return switch (nodeType) {
+            case ASSIGN, ADD, SUB , MUL, DIV, MOD, ADD_ASSIGN, SUB_ASSIGN, MUL_ASSIGN,
+                DIV_ASSIGN, MOD_ASSIGN -> {
+                yield true;
+            }
+            default -> {
+                yield false;
+            }
+        };
     }
 }

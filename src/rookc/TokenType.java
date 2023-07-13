@@ -1,10 +1,67 @@
+/*
+MIT License
+
+Copyright (c) 2023 rooklang-dev
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
 package rookc;
 
-public enum TokenType {
+enum TokenType {
     // NONE
     NONE,
 
     // KEYWORDS
-    AND, CLASS, IF, IMPORT, ELIF, ELSE,
-    FOR, FUNC, 
+    BOOL, BREAK, CHAR, CLASS, CONTINUE, ELSE, 
+    FALSE, FLOAT, FOR, FUNC, IF, IMPORT, INT, NULL,
+    PUB, RETURN, STRING, SUPER, SWITCH, THIS, 
+    TRUE, WHILE,
+
+    // LITERALS
+    INTEGER_LITERAL, FLOATING_LITERAL, CHARACTER_LITERAL, STRING_LITERAL,
+
+    // IDENTIFIER
+    IDENTIFIER,
+
+    // PUNCTUATION
+    LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE, LEFT_BRACKET, RIGHT_BRACKET,
+    SEMICOLON, COLON, COMMA, DOT,
+
+    // ARITHMETIC OPERATORS
+    PLUS, MINUS, ASTERISK, SLASH, PERCENT,
+
+    // RELATIONAL OPERATORS
+    LESS_THAN, LESS_THAN_OR_EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, EQUAL, EQUAL_EQUAL, NOT_EQUAL,
+
+    // LOGICAL OPERATORS
+    AND, OR, NOT,
+
+    // BITWISE OPERATORS
+    BITWISE_AND, BITWISE_OR, BITWISE_XOR, BITWISE_NOT, LEFT_SHIFT, RIGHT_SHIFT, UNSIGNED_RIGHT_SHIFT,
+
+    // ASSIGNMENT OPERATORS
+    ASSIGN, PLUS_ASSIGN, MINUS_ASSIGN, ASTERISK_ASSIGN, SLASH_ASSIGN, PERCENT_ASSIGN,
+    AND_ASSIGN, OR_ASSIGN, XOR_ASSIGN, LEFT_SHIFT_ASSIGN, RIGHT_SHIFT_ASSIGN, UNSIGNED_RIGHT_SHIFT_ASSIGN,
+
+    // INCREMENT/DECREMENT OPERATORS
+    INCREMENT, DECREMENT,
+
+    // EOF
+    EOF
 }

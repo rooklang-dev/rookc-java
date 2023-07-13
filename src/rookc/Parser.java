@@ -23,12 +23,58 @@ SOFTWARE.
 */
 package rookc;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import rookc.parser.*;
 
 /**
  * Class Parser.
  * Implements the parsing methods for Rookc Java parser.
+ * @author Srcydev
+ * @see Lexer.java
  */
-public class Parser {
-    
+final class Parser {
+    /** Instance Variables. */
+    String file;
+    String sep = System.lineSeparator();
+
+    /**
+     * Public constructor for Parser class.
+     * This constructor takes the filename and reads it
+     * line by line. Then it appends it to the instance 
+     * variable file.
+     * 
+     * @param filename Name along with the relative / 
+     * absolute path of the file. 
+     */
+    public Parser (String filename) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                this.file += line + sep;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Method parse.
+     * It is invoked by method main.
+     * It uses the Node class to represent the 
+     * AST.
+     */
+    public void parse() {
+        Node root = new Node("__main__");
+        Lexer lex = new Lexer(this.file);
+        TokenType type = lex.getNextTokenType();
+        
+        while (type != TokenType.EOF) {
+            if (type == TokenType.IF) {
+                
+            }
+        }
+    }
 }

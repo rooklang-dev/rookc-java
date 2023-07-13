@@ -27,7 +27,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Report {
+final class Report {
     public static void error(String message) {
         printReport(message, ReportType.ERROR);
     }

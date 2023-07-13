@@ -23,29 +23,30 @@ SOFTWARE.
 */
 package rookc.parser;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
-public final class Node {
-    ArrayList<Node> nodes = new ArrayList<>();
-    String value;
-
-    public Node (String value) {
-        this.value = value;
+public class SymbolTable {
+    private static HashMap<String, DataType> table;
+    
+    public SymbolTable() {
+        table = new HashMap<>();
     }
 
-    public int length() {
-        return this.nodes.size();
+    public static DataType getDataType(String identifier) {
+        return table.get(identifier);
     }
 
-    public void addChild(Node node) {
-        this.nodes.add(node);
+    public static void addIdentifier(String identifier, DataType dataType) {
+        table.put(identifier, dataType);
     }
 
-    public ArrayList<Node> getNodes() {
-        return this.nodes;
+    public static boolean doesExist(String identifier) {
+        return (table.get(identifier) != null) ? true : false;
     }
 
-    public String getValue() {
-        return this.value;
+    public static boolean isValid(String identifier, DataType dataType) {
+        DataType type = table.get(identifier);
+
+        return (type == dataType) ? true : false;
     }
 }

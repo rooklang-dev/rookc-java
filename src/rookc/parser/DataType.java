@@ -23,29 +23,6 @@ SOFTWARE.
 */
 package rookc.parser;
 
-import java.util.ArrayList;
-
-public final class Node {
-    ArrayList<Node> nodes = new ArrayList<>();
-    String value;
-
-    public Node (String value) {
-        this.value = value;
-    }
-
-    public int length() {
-        return this.nodes.size();
-    }
-
-    public void addChild(Node node) {
-        this.nodes.add(node);
-    }
-
-    public ArrayList<Node> getNodes() {
-        return this.nodes;
-    }
-
-    public String getValue() {
-        return this.value;
-    }
+public enum DataType {
+    INT, FLOAT, CHAR, BOOL, STRING, FUNCTION;
 }
